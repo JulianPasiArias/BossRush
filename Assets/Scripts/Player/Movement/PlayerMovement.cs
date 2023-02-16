@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     private float horizontal;
+
+    public AudioSource audioS;
     private float speed = 10f;
-    private float jumpingPower = 13f;
+    private float jumpingPower = 12f;
     private bool isFacingRight = true;
 
     [SerializeField] private float acceleration;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
    
    
 
+
     //Dash
     private bool canDash = true;
     private bool isDashing;
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpBufferLenght = .1f;
     private float jumpBufferCount;
 
+    private bool playerIsMoving = false;
+
 
     [SerializeField] private TrailRenderer trail; 
 
@@ -52,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Rb2D = GetComponent<Rigidbody2D>();
+        
        
 
     }
@@ -78,10 +84,11 @@ public class PlayerMovement : MonoBehaviour
             speed = 10f;
         }
 
- 
+
        if(speed !=0)
        {
-       
+            playerIsMoving = true;
+        
         if(timeBtwTrail <=0)
         {
             Instantiate(trailEffect,groundCheck.position,Quaternion.identity);
@@ -156,7 +163,10 @@ public class PlayerMovement : MonoBehaviour
           Rb2D.velocity = new Vector2 (horizontal * speed, Rb2D.velocity.y);
           playerAnim.SetFloat("Speed", Mathf.Abs(horizontal));
         
-      
+        if(playerIsMoving && IsGrounded())
+        {
+            //audioS.Play();
+        }
         
         
         
@@ -213,6 +223,7 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(dustEffect, groundCheck.position, Quaternion.identity);
             Rb2D.AddForce(Vector2.up* jumpingPower, ForceMode2D.Impulse);
             jumpBufferCount = 0;
+            audioS.Play();
             
            
         }

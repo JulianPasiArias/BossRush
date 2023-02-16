@@ -11,6 +11,8 @@ public class EyeAttackStun : MonoBehaviour
    public LayerMask enemyLayer;
     public int attackDamage;
 
+    public AudioSource audioS;
+
     public static bool EyeAttackDone = false;
     void Start()
     {
@@ -32,6 +34,7 @@ public class EyeAttackStun : MonoBehaviour
         
         EyeAttackDone = true;
         Instantiate(particles,spawnParticles.position,Quaternion.identity);
+        audioS.Play();
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(spawnParticles.position,attackRange,enemyLayer);
 

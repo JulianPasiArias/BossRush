@@ -11,10 +11,11 @@ public class DropEye : MonoBehaviour
 
    public static bool playerHasTheEye = false;
 
-   [SerializeField] private GameObject floor,hole,eyeOnPlayer;
+   [SerializeField] private GameObject floor,hole,eyeOnPlayer,lightHole,lilitaHP;
     void Start()
     {   
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     
@@ -25,6 +26,8 @@ public class DropEye : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
             droppedEye = true;
             gameObject.layer = 7;
+            lightHole.SetActive(true);
+            lilitaHP.SetActive(false);
             
         }
         

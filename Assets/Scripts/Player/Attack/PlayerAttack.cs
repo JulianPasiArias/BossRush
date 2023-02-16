@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage;
 
     public int rageIncreased;
+    public AudioSource audioS;
     void Start()
     {
         
@@ -46,7 +47,8 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetComponent<LamiaLife>().TakeDamage(attackDamage);
         }
-        
+
+        audioS.Play();
          
          gameObject.GetComponent<CreateRage>().IncreaseRage(rageIncreased);
          

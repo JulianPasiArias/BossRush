@@ -9,7 +9,9 @@ public class Lamia : MonoBehaviour
      [SerializeField] private float explosionForce = 50f;
      [SerializeField] private float explosionRadius;
     [SerializeField] private LayerMask layerToHit;
-    public GameObject explosionParticles;
+    //public GameObject explosionParticles;
+
+    public AudioSource audioS;
 
     [SerializeField] GameObject undergroundLamia,fallingRoof,colliderLife,fallingRoof2;
 
@@ -77,8 +79,10 @@ public class Lamia : MonoBehaviour
 
     private void ExplosionAttack()
     {
+        audioS.Play();
+        
          Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position,explosionRadius,layerToHit);
-         Instantiate(explosionParticles, transform.position,Quaternion.identity);
+        //Instantiate(explosionParticles, transform.position,Quaternion.identity);
 
          foreach(Collider2D obj in objects)
          {

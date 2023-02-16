@@ -8,6 +8,7 @@ public class RockProjectile : MonoBehaviour
 {
    public float speed;
 
+     public AudioSource audioS;
    private bool touchedGround = false;
     public float time = 8f;
     public float timeLeft;
@@ -61,6 +62,8 @@ public class RockProjectile : MonoBehaviour
 
      private void Explosion()
      {
+        
+        audioS.Play();
          Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position,explosionRadius,layerToHit);
 
          foreach(Collider2D obj in objects)

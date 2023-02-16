@@ -7,6 +7,8 @@ public class FloorTurningRed : MonoBehaviour
    public Animator anim;
    public float cooldown = 1f;
    private bool playerIsOnGround = false;
+
+   public AudioSource audioS;
    
     void Start()
     {
@@ -30,6 +32,7 @@ public class FloorTurningRed : MonoBehaviour
         }
         if(cooldown <= 0 && playerIsOnGround)
         {
+           audioS.Play();
             PlayerHealth.currentHealth -=1;
             FindObjectOfType<HealthBar>().slider.value -=1;
             GameObject.Find("2D Camera").GetComponent<Animator>().SetTrigger("ShakeHarder");

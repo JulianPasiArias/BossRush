@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
    
    private bool playerisHit = false;
    public static bool playerIsFullHealth = true;
+
+   public AudioSource audioS;
    
     void Start()
     {
@@ -40,11 +42,13 @@ public class PlayerHealth : MonoBehaviour
             camAnim.SetTrigger("Idle");
             flashAnim.SetTrigger("Idle");
             playerisHit = false;
+            audioS.Play();
         }
         if(currentHealth == maxHealth)
         {
             playerIsFullHealth = true;
         }
+
         
     }
 
@@ -54,10 +58,14 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(1);  
             
+            
 
             if(currentHealth <=0)
             {
                 GameManager.instance.gameHasEnded = true;
+                FallDown.firstPhaseDone = false;
+                SecondPhase.SecondPhaseDone = false;
+                ThirdPhase.ThirdPhaseDone = false;
                 
 
             }

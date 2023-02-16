@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffect: {fileID: 8138165469163174495, guid: 85e67c859b388b746ac6c8e66425fd3c, type: 3}
+  audioS: {fileID: 0}
 --- !u!95 &5414611156500634739
 Animator:
   serializedVersion: 4
