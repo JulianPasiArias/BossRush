@@ -7,10 +7,11 @@ public class SecondPhase : MonoBehaviour
     public Animator anim;
     public Animator camAnim;
     private Rigidbody2D rb;
-    [SerializeField] private GameObject normalEyeBall1,normalEyeBall2,mouth,particles,finalBossLilita,arm,healtBar,punchingHand;
+    [SerializeField] private GameObject mouth,particles,finalBossLilita,arm,healtBar,punchingHand,lifeBar;
 
     [SerializeField] private Transform punchHandSpawn;
     public static bool SecondPhaseDone = false;
+    
     
     public int maxHealth = 120;
     int currentHealth;
@@ -49,10 +50,8 @@ public class SecondPhase : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         gameObject.GetComponent<Animator>().enabled = false;
-        gameObject.GetComponent<PathingBoss>().enabled = true;
-        Instantiate(particles,transform.position,Quaternion.identity);
-        normalEyeBall2.SetActive(true);
-        normalEyeBall1.SetActive(true);
+        gameObject.GetComponentInChildren<ShootSecondPhase>().enabled = true;
+        GameObject.Find("Eyes1").GetComponent<ShootSecondPhase>().enabled = true;
         mouth.SetActive(true);
         arm.SetActive(true);
         healtBar.SetActive(true);
@@ -69,6 +68,7 @@ public class SecondPhase : MonoBehaviour
 
    void Die()
    {
+       lifeBar.SetActive(false);
         SecondPhaseDone= true;
         rb.bodyType = RigidbodyType2D.Dynamic;
         Destroy(gameObject, 2);
