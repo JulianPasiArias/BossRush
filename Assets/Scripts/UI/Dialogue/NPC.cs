@@ -10,6 +10,8 @@ public class NPC : MonoBehaviour
 
     public static bool  dialogueIsOver = false;
 
+    [SerializeField] GameObject backround;
+
     
     public void TriggerDialogue()
     {
@@ -23,9 +25,12 @@ public class NPC : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-            
+          if(!dialogueIsOver)
+          {
+            backround.SetActive(true); 
             TriggerDialogue();
             inRange = true;
+          } 
             
 
     }

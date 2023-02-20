@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
 
-    public AudioSource audioS;
+    
    void Update()
    {
     Physics2D.IgnoreLayerCollision(9,10);
@@ -14,7 +14,7 @@ public class Spikes : MonoBehaviour
    
     void OnCollisionEnter2D(Collision2D col)
     {
-        audioS.Play();
+        
         Destroy(gameObject);
    
     }

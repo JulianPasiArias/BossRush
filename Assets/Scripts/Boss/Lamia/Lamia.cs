@@ -20,6 +20,8 @@ public class Lamia : MonoBehaviour
     public float cooldownExplosion = 3.5f;
 
     private float undergroundTimer = 20f;
+    
+    public static bool LamiaIsDead = false;
    
     void Start()
     {
@@ -53,6 +55,7 @@ public class Lamia : MonoBehaviour
 
         if(LamiaLife.currentHealth == 0)
         {
+            LamiaIsDead = true;
             Debug.Log("Lamia is Dead");
             Destroy(gameObject,1);
         }

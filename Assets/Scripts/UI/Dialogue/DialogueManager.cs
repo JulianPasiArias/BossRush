@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     
     public Animator anim;
 
-    public GameObject barrier,backround;
+    public GameObject backround;
 
     
     
@@ -71,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         PlayerMovement.playerIsTalking = false;
        
         NPC.dialogueIsOver = true;
-        barrier.SetActive(false);
+       
         backround.SetActive(false);
         
 
